@@ -1,12 +1,62 @@
 body {
   max-width: 1280px;
-  padding-top: 50px;
+  padding-top: 20px;
 }
 .container {
-  width: 1280px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.textarea {
+  width: 1000px;
+  margin-bottom: 10px;
+}
+.keyboard {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+}
+button {
+  width: 50px;
+  height: 50px;
+}
+.backspace {
+  width: 150px;
+}
+.tab {
+  width: 90px;
+}
+.capslock {
+  width: 130px;
+}
+.shift {
+  width: 150px;
+}
+.space {
+  width: 306px;
+}
+.alt {
+  width: 100px;
+}
+.win {
+  width: 75px;
+}
+.ctrl {
+  width: 90px;
+}
+.del {
+  width: 70px;
+}
+.enter {
+  width: 120px;
 }
