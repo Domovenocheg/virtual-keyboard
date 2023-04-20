@@ -104,3 +104,7 @@ button:active {
 .arrow:active, .del:active {
   background: #9e83dd;
 }
+.highlight{
+  background-color: #95f33d;
+  border-radius: 30px;
+}
