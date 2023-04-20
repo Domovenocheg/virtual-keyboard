@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 .row {
   width: 100%;
@@ -27,9 +27,21 @@ body {
   gap: 2px;
 }
 button {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
+  font-size: 20px;
+  background-color: #43c3d0;
+  border: 0.2px solid #38a5b1;
+  border-radius: 5px;
 }
+button:hover {
+  background-color: #35c1d1;
+}
+button:active {
+  background-color: #38a5b1;
+  border-radius: 30px;
+}
+
 .backspace {
   width: 150px;
 }
@@ -43,7 +55,7 @@ button {
   width: 150px;
 }
 .space {
-  width: 306px;
+  width: 314px;
 }
 .alt {
   width: 100px;
@@ -59,4 +71,36 @@ button {
 }
 .enter {
   width: 120px;
+}
+.backspace,
+.enter,
+.ctrl,
+.shift,
+.win,
+.alt,
+.capslock,
+.tab, .arrow, .del {
+  background: #674da6;
+}
+.backspace:hover,
+.enter:hover,
+.ctrl:hover,
+.shift:hover,
+.win:hover,
+.alt:hover,
+.capslock:hover,
+.tab:hover,
+.arrow:hover, .del:hover {
+  background: #7c61bb;
+}
+.backspace:active,
+.enter:active,
+.ctrl:active,
+.shift:active,
+.win:active,
+.alt:active,
+.capslock:active,
+.tab:active,
+.arrow:active, .del:active {
+  background: #9e83dd;
 }
