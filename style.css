@@ -79,7 +79,9 @@ button:active {
 .win,
 .alt,
 .capslock,
-.tab, .arrow, .del {
+.tab,
+.arrow,
+.del {
   background: #674da6;
 }
 .backspace:hover,
@@ -90,7 +92,8 @@ button:active {
 .alt:hover,
 .capslock:hover,
 .tab:hover,
-.arrow:hover, .del:hover {
+.arrow:hover,
+.del:hover {
   background: #7c61bb;
 }
 .backspace:active,
@@ -101,10 +104,18 @@ button:active {
 .alt:active,
 .capslock:active,
 .tab:active,
-.arrow:active, .del:active {
+.arrow:active,
+.del:active {
   background: #9e83dd;
 }
-.highlight{
+.highlight {
+  background-color: #95f33d;
+  border-radius: 30px;
+}
+.uppercase {
+  text-transform: capitalize;
+}
+.active {
   background-color: #95f33d;
   border-radius: 30px;
 }
