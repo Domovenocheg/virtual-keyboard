@@ -162,10 +162,14 @@ document.addEventListener("keydown", function (event) {
   } else if (event.code === "ShiftRight") {
     event.preventDefault();
     rightShiftButton.classList.add("highlight");
-    shiftButtonDown();
+    keyboard.classList.contains("layout")
+      ? shiftButtonDownLayout()
+      : shiftButtonDown();
   } else if (event.code === "ShiftLeft") {
     leftShiftButton.classList.add("highlight");
-    shiftButtonDown();
+    keyboard.classList.contains("layout")
+      ? shiftButtonDownLayout()
+      : shiftButtonDown();
   } else if (event.code === "ControlLeft") {
     ctrlLeftButton.classList.add("highlight");
   } else if (event.code === "ControlRight") {
@@ -234,7 +238,6 @@ document.addEventListener("keydown", function (event) {
           button.classList.add("highlight");
           output.value += key;
         }
-        console.log(capsLockMode);
       });
     }
   }
@@ -245,10 +248,14 @@ document.addEventListener("keyup", function (event) {
     spaceButton.classList.remove("highlight");
   } else if (event.code === "ShiftRight") {
     rightShiftButton.classList.remove("highlight");
-    shiftButtonUp();
+    keyboard.classList.contains("layout")
+      ? shiftButtonUpLayout()
+      : shiftButtonUp();
   } else if (event.code === "ShiftLeft") {
     leftShiftButton.classList.remove("highlight");
-    shiftButtonUp();
+    keyboard.classList.contains("layout")
+      ? shiftButtonUpLayout()
+      : shiftButtonUp();
   } else if (event.code === "ControlLeft") {
     ctrlLeftButton.classList.remove("highlight");
   } else if (event.code === "ControlRight") {
@@ -286,8 +293,8 @@ document.addEventListener("keyup", function (event) {
     });
   }
 });
-console.log(keysCapitalize);
-/// изменение цифр на знаки
+
+/// изменение цифр на знаки и uppercase для букв на english layout
 leftShiftButton.addEventListener("mousedown", shiftButtonDown);
 leftShiftButton.addEventListener("mouseup", shiftButtonUp);
 rightShiftButton.addEventListener("mousedown", shiftButtonDown);
@@ -296,54 +303,522 @@ rightShiftButton.addEventListener("mouseup", shiftButtonUp);
 function shiftButtonDown() {
   keysCapitalize.forEach((key) => key.classList.add("uppercase"));
   keysCapitalize.forEach((key) => {
-    if (key.value === "1") key.innerHTML = "!";
-    else if (key.value === "2") key.innerHTML = "@";
-    else if (key.value === "3") key.innerHTML = "#";
-    else if (key.value === "4") key.innerHTML = "$";
-    else if (key.value === "5") key.innerHTML = "%";
-    else if (key.value === "6") key.innerHTML = "^";
-    else if (key.value === "7") key.innerHTML = "&";
-    else if (key.value === "8") key.innerHTML = "*";
-    else if (key.value === "9") key.innerHTML = "(";
-    else if (key.value === "0") key.innerHTML = ")";
-    else if (key.value === "-") key.innerHTML = "_";
-    else if (key.value === "=") key.innerHTML = "+";
-    else if (key.value === "`") key.innerHTML = "~";
-    else if (key.value === "[") key.innerHTML = "{";
-    else if (key.value === "]") key.innerHTML = "}";
-    else if (key.value === ";") key.innerHTML = ":";
-    else if (key.value === "'") key.innerHTML = '"';
-    else if (key.value === "\\") key.innerHTML = "|";
-    else if (key.value === ",") key.innerHTML = "<";
-    else if (key.value === ".") key.innerHTML = ">";
-    else if (key.value === "/") key.innerHTML = "?";
+    if (key.value === "1") {
+      key.innerHTML = "!";
+      key.value = "!";
+    } else if (key.value === "2") {
+      key.innerHTML = "@";
+      key.value = "@";
+    } else if (key.value === "3") {
+      key.innerHTML = "#";
+      key.value = "#";
+    } else if (key.value === "4") {
+      key.innerHTML = "$";
+      key.value = "$";
+    } else if (key.value === "5") {
+      key.innerHTML = "%";
+      key.value = "%";
+    } else if (key.value === "6") {
+      key.innerHTML = "^";
+      key.value = "^";
+    } else if (key.value === "7") {
+      key.innerHTML = "&";
+      key.value = "&";
+    } else if (key.value === "8") {
+      key.innerHTML = "*";
+      key.value = "*";
+    } else if (key.value === "9") {
+      key.innerHTML = "(";
+      key.value = "(";
+    } else if (key.value === "0") {
+      key.innerHTML = ")";
+      key.value = ")";
+    } else if (key.value === "-") {
+      key.innerHTML = "_";
+      key.value = "_";
+    } else if (key.value === "=") {
+      key.innerHTML = "+";
+      key.value = "+";
+    } else if (key.value === "`") {
+      key.innerHTML = "~";
+      key.value = "~";
+    } else if (key.value === "[") {
+      key.innerHTML = "{";
+      key.value = "{";
+    } else if (key.value === "]") {
+      key.innerHTML = "}";
+      key.value = "}";
+    } else if (key.value === ";") {
+      key.innerHTML = ":";
+      key.value = ":";
+    } else if (key.value === "'") {
+      key.innerHTML = '"';
+      key.value = '"';
+    } else if (key.value === "\\") {
+      key.innerHTML = "|";
+      key.value = "|";
+    } else if (key.value === ",") {
+      key.innerHTML = "<";
+      key.value = "<";
+    } else if (key.value === ".") {
+      key.innerHTML = ">";
+      key.value = ">";
+    } else if (key.value === "/") {
+      key.innerHTML = "?";
+      key.value = "?";
+    }
   });
   capsLockMode ? (capsLockMode = false) : (capsLockMode = true);
 }
 function shiftButtonUp() {
   keysCapitalize.forEach((key) => key.classList.remove("uppercase"));
   keysCapitalize.forEach((key) => {
-    if (key.classList.contains("one")) key.innerHTML = "1";
-    else if (key.value === "2") key.innerHTML = "2";
-    else if (key.value === "3") key.innerHTML = "3";
-    else if (key.value === "4") key.innerHTML = "4";
-    else if (key.value === "5") key.innerHTML = "5";
-    else if (key.value === "6") key.innerHTML = "6";
-    else if (key.value === "7") key.innerHTML = "7";
-    else if (key.value === "8") key.innerHTML = "8";
-    else if (key.value === "9") key.innerHTML = "9";
-    else if (key.value === "0") key.innerHTML = "0";
-    else if (key.value === "-") key.innerHTML = "-";
-    else if (key.value === "=") key.innerHTML = "=";
-    else if (key.value === "`") key.innerHTML = "`";
-    else if (key.value === "[") key.innerHTML = "[";
-    else if (key.value === "]") key.innerHTML = "]";
-    else if (key.value === ";") key.innerHTML = ";";
-    else if (key.value === "'") key.innerHTML = "'";
-    else if (key.value === "\\") key.innerHTML = "\\";
-    else if (key.value === ",") key.innerHTML = ",";
-    else if (key.value === ".") key.innerHTML = ".";
-    else if (key.value === "/") key.innerHTML = "/";
+    if (key.value === "!") {
+      key.innerHTML = "1";
+      key.value = "1";
+    } else if (key.value === "@") {
+      key.innerHTML = "2";
+      key.value = "2";
+    } else if (key.value === "#") {
+      key.innerHTML = "3";
+      key.value = "3";
+    } else if (key.value === "$") {
+      key.innerHTML = "4";
+      key.value = "4";
+    } else if (key.value === "%") {
+      key.innerHTML = "5";
+      key.value = "5";
+    } else if (key.value === "^") {
+      key.innerHTML = "6";
+      key.value = "6";
+    } else if (key.value === "&") {
+      key.innerHTML = "7";
+      key.value = "7";
+    } else if (key.value === "*") {
+      key.innerHTML = "8";
+      key.value = "8";
+    } else if (key.value === "(") {
+      key.innerHTML = "9";
+      key.value = "9";
+    } else if (key.value === ")") {
+      key.innerHTML = "0";
+      key.value = "0";
+    } else if (key.value === "_") {
+      key.innerHTML = "-";
+      key.value = "-";
+    } else if (key.value === "+") {
+      key.innerHTML = "=";
+      key.value = "=";
+    } else if (key.value === "~") {
+      key.innerHTML = "`";
+      key.value = "`";
+    } else if (key.value === "{") {
+      key.innerHTML = "[";
+      key.value = "[";
+    } else if (key.value === "}") {
+      key.innerHTML = "]";
+      key.value = "]";
+    } else if (key.value === ":") {
+      key.innerHTML = ";";
+      key.value = ";";
+    } else if (key.value === '"') {
+      key.innerHTML = "'";
+      key.value = "'";
+    } else if (key.value === "|") {
+      key.innerHTML = "\\";
+      key.value = "\\";
+    } else if (key.value === "<") {
+      key.innerHTML = ",";
+      key.value = ",";
+    } else if (key.value === ">") {
+      key.innerHTML = ".";
+      key.value = ".";
+    } else if (key.value === "?") {
+      key.innerHTML = "/";
+      key.value = "/";
+    }
   });
   capsLockMode ? (capsLockMode = false) : (capsLockMode = true);
 }
+/// изменение цифр на знаки и uppercase для букв на russian layout
+function shiftButtonDownLayout() {
+  keysCapitalize.forEach((key) => key.classList.add("uppercase"));
+  keysCapitalize.forEach((key) => {
+    if (key.value === "1") {
+      key.innerHTML = "!";
+      key.value = "!";
+    } else if (key.value === "2") {
+      key.innerHTML = '"';
+      key.value = '"';
+    } else if (key.value === "3") {
+      key.innerHTML = "№";
+      key.value = "№";
+    } else if (key.value === "4") {
+      key.innerHTML = ";";
+      key.value = ";";
+    } else if (key.value === "5") {
+      key.innerHTML = "%";
+      key.value = "%";
+    } else if (key.value === "6") {
+      key.innerHTML = ":";
+      key.value = ":";
+    } else if (key.value === "7") {
+      key.innerHTML = "?";
+      key.value = "?";
+    } else if (key.value === "8") {
+      key.innerHTML = "*";
+      key.value = "*";
+    } else if (key.value === "9") {
+      key.innerHTML = "(";
+      key.value = "(";
+    } else if (key.value === "0") {
+      key.innerHTML = ")";
+      key.value = ")";
+    } else if (key.value === "-") {
+      key.innerHTML = "_";
+      key.value = "_";
+    } else if (key.value === "=") {
+      key.innerHTML = "+";
+      key.value = "+";
+    } else if (key.value === "\\") {
+      key.innerHTML = "/";
+      key.value = "/";
+    } else if (key.value === ".") {
+      key.innerHTML = ",";
+      key.value = ",";
+    }
+  });
+  capsLockMode ? (capsLockMode = false) : (capsLockMode = true);
+}
+function shiftButtonUpLayout() {
+  keysCapitalize.forEach((key) => key.classList.remove("uppercase"));
+  keysCapitalize.forEach((key) => {
+    if (key.value === "!") {
+      key.innerHTML = "1";
+      key.value = "1";
+    } else if (key.value === '"') {
+      key.innerHTML = "2";
+      key.value = "2";
+    } else if (key.value === "№") {
+      key.innerHTML = "3";
+      key.value = "3";
+    } else if (key.value === ";") {
+      key.innerHTML = "4";
+      key.value = "4";
+    } else if (key.value === "%") {
+      key.innerHTML = "5";
+      key.value = "5";
+    } else if (key.value === ":") {
+      key.innerHTML = "6";
+      key.value = "6";
+    } else if (key.value === "?") {
+      key.innerHTML = "7";
+      key.value = "7";
+    } else if (key.value === "*") {
+      key.innerHTML = "8";
+      key.value = "8";
+    } else if (key.value === "(") {
+      key.innerHTML = "9";
+      key.value = "9";
+    } else if (key.value === ")") {
+      key.innerHTML = "0";
+      key.value = "0";
+    } else if (key.value === "_") {
+      key.innerHTML = "-";
+      key.value = "-";
+    } else if (key.value === "+") {
+      key.innerHTML = "=";
+      key.value = "=";
+    } else if (key.value === "/") {
+      key.innerHTML = "\\";
+      key.value = "\\";
+    } else if (key.value === ",") {
+      key.innerHTML = ".";
+      key.value = ".";
+    }
+  });
+  capsLockMode ? (capsLockMode = false) : (capsLockMode = true);
+}
+
+/// изменение раскладки клавиатуры
+document.addEventListener("keydown", function (event) {
+  if (event.altKey && event.ctrlKey && !keyboard.classList.contains("layout")) {
+    keyboard.classList.add("layout");
+    keysCapitalize.forEach((key) => {
+      if (key.value === "q") {
+        key.innerHTML = "й";
+        key.value = "й";
+      } else if (key.value === "w") {
+        key.innerHTML = "ц";
+        key.value = "ц";
+      } else if (key.value === "e") {
+        key.innerHTML = "у";
+        key.value = "у";
+      } else if (key.value === "r") {
+        key.innerHTML = "к";
+        key.value = "к";
+      } else if (key.value === "t") {
+        key.innerHTML = "е";
+        key.value = "е";
+      } else if (key.value === "y") {
+        key.innerHTML = "н";
+        key.value = "н";
+      } else if (key.value === "u") {
+        key.innerHTML = "г";
+        key.value = "г";
+      } else if (key.value === "i") {
+        key.innerHTML = "ш";
+        key.value = "ш";
+      } else if (key.value === "o") {
+        key.innerHTML = "щ";
+        key.value = "щ";
+      } else if (key.value === "p") {
+        key.innerHTML = "з";
+        key.value = "з";
+      } else if (key.value === "[") {
+        key.innerHTML = "х";
+        key.value = "х";
+      } else if (key.value === "]") {
+        key.innerHTML = "ъ";
+        key.value = "ъ";
+      } else if (key.value === "a") {
+        key.innerHTML = "ф";
+        key.value = "ф";
+      } else if (key.value === "s") {
+        key.innerHTML = "ы";
+        key.value = "ы";
+      } else if (key.value === "d") {
+        key.innerHTML = "в";
+        key.value = "в";
+      } else if (key.value === "f") {
+        key.innerHTML = "а";
+        key.value = "а";
+      } else if (key.value === "g") {
+        key.innerHTML = "п";
+        key.value = "п";
+      } else if (key.value === "h") {
+        key.innerHTML = "р";
+        key.value = "р";
+      } else if (key.value === "j") {
+        key.innerHTML = "о";
+        key.value = "о";
+      } else if (key.value === "k") {
+        key.innerHTML = "л";
+        key.value = "л";
+      } else if (key.value === "l") {
+        key.innerHTML = "д";
+        key.value = "д";
+      } else if (key.value === ";") {
+        key.innerHTML = "ж";
+        key.value = "ж";
+      } else if (key.value === "'") {
+        key.innerHTML = "э";
+        key.value = "э";
+      } else if (key.value === "z") {
+        key.innerHTML = "я";
+        key.value = "я";
+      } else if (key.value === "x") {
+        key.innerHTML = "ч";
+        key.value = "ч";
+      } else if (key.value === "c") {
+        key.innerHTML = "с";
+        key.value = "с";
+      } else if (key.value === "v") {
+        key.innerHTML = "м";
+        key.value = "м";
+      } else if (key.value === "b") {
+        key.innerHTML = "и";
+        key.value = "и";
+      } else if (key.value === "n") {
+        key.innerHTML = "т";
+        key.value = "т";
+      } else if (key.value === "m") {
+        key.innerHTML = "ь";
+        key.value = "ь";
+      } else if (key.value === ",") {
+        key.innerHTML = "б";
+        key.value = "б";
+      } else if (key.value === ".") {
+        key.innerHTML = "ю";
+        key.value = "ю";
+      } else if (key.value === "/") {
+        key.innerHTML = ".";
+        key.value = ".";
+      } else if (key.value === "`") {
+        key.innerHTML = "ё";
+        key.value = "ё";
+      } else if (key.value === "@") {
+        key.innerHTML = "2";
+        key.value = "2";
+      } else if (key.value === "#") {
+        key.innerHTML = "3";
+        key.value = "3";
+      } else if (key.value === "$") {
+        key.innerHTML = "4";
+        key.value = "4";
+      } else if (key.value === "~") {
+        key.innerHTML = "ё";
+        key.value = "ё";
+      } else if (key.value === "^") {
+        key.innerHTML = "6";
+        key.value = "6";
+      } else if (key.value === "&") {
+        key.innerHTML = "7";
+        key.value = "7";
+      } else if (key.value === "{") {
+        key.innerHTML = "х";
+        key.value = "х";
+      } else if (key.value === "}") {
+        key.innerHTML = "ъ";
+        key.value = "ъ";
+      } else if (key.value === ":") {
+        key.innerHTML = "ж";
+        key.value = "ж";
+      } else if (key.value === '"') {
+        key.innerHTML = "э";
+        key.value = "э";
+      } else if (key.value === "<") {
+        key.innerHTML = "б";
+        key.value = "б";
+      } else if (key.value === ">") {
+        key.innerHTML = "ю";
+        key.value = "ю";
+      } else if (key.value === "?") {
+        key.innerHTML = ".";
+        key.value = ".";
+      } else if (key.value === "\\") {
+        key.innerHTML = "\\";
+        key.value = "\\";
+      }
+    });
+  } else if (
+    event.altKey &&
+    event.ctrlKey &&
+    keyboard.classList.contains("layout")
+  ) {
+    keyboard.classList.remove("layout");
+    keysCapitalize.forEach((key) => {
+      if (key.value === "й") {
+        key.innerHTML = "q";
+        key.value = "q";
+      } else if (key.value === "ц") {
+        key.innerHTML = "w";
+        key.value = "w";
+      } else if (key.value === "у") {
+        key.innerHTML = "e";
+        key.value = "e";
+      } else if (key.value === "к") {
+        key.innerHTML = "r";
+        key.value = "r";
+      } else if (key.value === "е") {
+        key.innerHTML = "t";
+        key.value = "t";
+      } else if (key.value === "н") {
+        key.innerHTML = "y";
+        key.value = "y";
+      } else if (key.value === "г") {
+        key.innerHTML = "u";
+        key.value = "u";
+      } else if (key.value === "ш") {
+        key.innerHTML = "i";
+        key.value = "i";
+      } else if (key.value === "щ") {
+        key.innerHTML = "o";
+        key.value = "o";
+      } else if (key.value === "з") {
+        key.innerHTML = "p";
+        key.value = "p";
+      } else if (key.value === "х") {
+        key.innerHTML = "[";
+        key.value = "[";
+      } else if (key.value === "ъ") {
+        key.innerHTML = "]";
+        key.value = "]";
+      } else if (key.value === "ф") {
+        key.innerHTML = "a";
+        key.value = "a";
+      } else if (key.value === "ы") {
+        key.innerHTML = "s";
+        key.value = "s";
+      } else if (key.value === "в") {
+        key.innerHTML = "d";
+        key.value = "d";
+      } else if (key.value === "а") {
+        key.innerHTML = "f";
+        key.value = "f";
+      } else if (key.value === "п") {
+        key.innerHTML = "g";
+        key.value = "g";
+      } else if (key.value === "р") {
+        key.innerHTML = "h";
+        key.value = "h";
+      } else if (key.value === "о") {
+        key.innerHTML = "j";
+        key.value = "j";
+      } else if (key.value === "л") {
+        key.innerHTML = "k";
+        key.value = "k";
+      } else if (key.value === "д") {
+        key.innerHTML = "l";
+        key.value = "l";
+      } else if (key.value === "ж") {
+        key.innerHTML = ";";
+        key.value = ";";
+      } else if (key.value === "э") {
+        key.innerHTML = "'";
+        key.value = "'";
+      } else if (key.value === "я") {
+        key.innerHTML = "z";
+        key.value = "z";
+      } else if (key.value === "ч") {
+        key.innerHTML = "x";
+        key.value = "x";
+      } else if (key.value === "с") {
+        key.innerHTML = "c";
+        key.value = "c";
+      } else if (key.value === "м") {
+        key.innerHTML = "v";
+        key.value = "v";
+      } else if (key.value === "и") {
+        key.innerHTML = "b";
+        key.value = "b";
+      } else if (key.value === "т") {
+        key.innerHTML = "n";
+        key.value = "n";
+      } else if (key.value === "ь") {
+        key.innerHTML = "m";
+        key.value = "m";
+      } else if (key.value === "б") {
+        key.innerHTML = ",";
+        key.value = ",";
+      } else if (key.value === "ю") {
+        key.innerHTML = ".";
+        key.value = ".";
+      } else if (key.value === ".") {
+        key.innerHTML = "/";
+        key.value = "/";
+      } else if (key.value === "ё") {
+        key.innerHTML = "`";
+        key.value = "`";
+      } else if (key.value === '"') {
+        key.innerHTML = "2";
+        key.value = "2";
+      } else if (key.value === "№") {
+        key.innerHTML = "3";
+        key.value = "3";
+      } else if (key.value === ";") {
+        key.innerHTML = "4";
+        key.value = "4";
+      } else if (key.value === "%") {
+        key.innerHTML = "5";
+        key.value = "5";
+      } else if (key.value === ":") {
+        key.innerHTML = "6";
+        key.value = "6";
+      } else if (key.value === "?") {
+        key.innerHTML = "7";
+        key.value = "7";
+      }
+    });
+  }
+});

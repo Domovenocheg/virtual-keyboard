@@ -10,15 +10,24 @@ body {
   flex-direction: column;
 }
 .textarea {
-  width: 1000px;
-  margin-bottom: 10px;
+  width: 960px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  border-radius: 15px;
+  border: 2px solid #050505;
+  padding: 20px;
 }
+
 .keyboard {
-  width: 1000px;
+  width: 1020px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  border-radius: 20px;
+  padding: 15px;
+  background-color: #252525
 }
 .row {
   width: 100%;
@@ -31,7 +40,6 @@ button {
   height: 52px;
   font-size: 20px;
   background-color: #43c3d0;
-  border: 0.2px solid #38a5b1;
   border-radius: 5px;
 }
 button:hover {
