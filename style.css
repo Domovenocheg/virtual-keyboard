@@ -1,0 +1,129 @@
+body {
+  max-width: 1280px;
+  padding-top: 20px;
+}
+.container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.textarea {
+  width: 960px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  border-radius: 15px;
+  border: 2px solid #050505;
+  padding: 20px;
+}
+
+.keyboard {
+  width: 1020px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border-radius: 20px;
+  padding: 15px;
+  background-color: #252525
+}
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+}
+button {
+  width: 52px;
+  height: 52px;
+  font-size: 20px;
+  background-color: #43c3d0;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: #35c1d1;
+}
+button:active {
+  background-color: #38a5b1;
+  border-radius: 30px;
+}
+
+.backspace {
+  width: 150px;
+}
+.tab {
+  width: 90px;
+}
+.capslock {
+  width: 130px;
+}
+.shift {
+  width: 150px;
+}
+.space {
+  width: 314px;
+}
+.alt {
+  width: 100px;
+}
+.win {
+  width: 75px;
+}
+.ctrl {
+  width: 90px;
+}
+.del {
+  width: 70px;
+}
+.enter {
+  width: 120px;
+}
+.backspace,
+.enter,
+.ctrl,
+.shift,
+.win,
+.alt,
+.capslock,
+.tab,
+.arrow,
+.del {
+  background: #674da6;
+}
+.backspace:hover,
+.enter:hover,
+.ctrl:hover,
+.shift:hover,
+.win:hover,
+.alt:hover,
+.capslock:hover,
+.tab:hover,
+.arrow:hover,
+.del:hover {
+  background: #7c61bb;
+}
+.backspace:active,
+.enter:active,
+.ctrl:active,
+.shift:active,
+.win:active,
+.alt:active,
+.capslock:active,
+.tab:active,
+.arrow:active,
+.del:active {
+  background: #9e83dd;
+}
+.highlight {
+  background-color: #95f33d;
+  border-radius: 30px;
+}
+.uppercase {
+  text-transform: capitalize;
+}
+.active {
+  background-color: #95f33d;
+  border-radius: 30px;
+}
